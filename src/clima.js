@@ -53,7 +53,42 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+  <div class="weather-forecast">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="weather-forecast-date">${day}
+                            </div>
+                            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png" alt=""
+                                width="42" />
+                            <div class="weather-forecast-temperatures">
+                                <span class="weather-forecast-temperature-max">
+                                    19°
+                                </span>
+                                <span class="weather-forecast-temperature-min">
+                                    8°
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+`;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Maputo");
+displayForecast();
